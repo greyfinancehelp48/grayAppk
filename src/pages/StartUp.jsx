@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import customercareImg from "../assets/customercare.jpg";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+
 const StartUp = () => {
   const [textInput, setTextInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
 
   // Load saved input from localStorage on component mount
   useEffect(() => {
@@ -20,18 +24,16 @@ const StartUp = () => {
     localStorage.setItem("startupInput", value);
   };
 
-  const handleSubmit = () => {
-    setLoading(true);
-    // Save the final input to localStorage
-    localStorage.setItem("startupInput", textInput);
+const handleSubmit = () => {
+  setLoading(true);
+  localStorage.setItem("startupInput", textInput);
 
-    // Simulate processing time
-    setTimeout(() => {
-      setLoading(false);
-      // You can add navigation logic here when integrated with your router
-      console.log("Navigating to login page...");
-    }, 1000);
-  };
+  setTimeout(() => {
+    setLoading(false);
+    navigate("/home"); // 👈 change '/home' to your actual route
+  }, 1000);
+};
+
 
   const isButtonEnabled = textInput.trim().length > 0;
 
@@ -106,3 +108,4 @@ const StartUp = () => {
 };
 
 export default StartUp;
+
