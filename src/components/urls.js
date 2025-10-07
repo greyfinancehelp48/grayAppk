@@ -1,5 +1,6 @@
-const BASE_URL = "https://maya-grey-api.vercel.app";
+const BASE_URL = "https://gray-api.vercel.app";
 
 export default BASE_URL;
+
 
 
